@@ -13,29 +13,31 @@ class Headphone:
         self.brand = brand
         self.name = name
         self.color = color
-        self.volume = volume
+        self.__volume = volume
         self.speakers = speakers
 
-    def setVolume(self, value):
-        if value < 0:
-            value = 0
-        elif value > 20:
-            value = 20
-        self.volume = value
-    
+    def setVolume(self, amount):
+        if amount < 0:
+            self.__volume = 0
+        elif amount > 20:
+            self.__volume = 20
+        else:
+            self.__volume = amount
+        print(amount)
+        
     def getVolume(self):
-        return self.volume
+        return self.__volume
 
     def volumeUp(self, amount):
-        self.volume += amount
-        return self.volume
+        self.__volume += amount
+        return self.__volume
 
     def volumeDown(self, amount):
-        self.volume -= amount
-        return self.volume
+        self.__volume -= amount
+        return self.__volume
     
     def __str__(self):
-        return f"Brand: {self.brand} \nType: {self.name}\nColor: {self.color}\nVolume: {self.volume}\nSpeakers: {self.speakers}"
+        return f"Brand: {self.brand} \nType: {self.name}\nColor: {self.color}\nVolume: {self.__volume}\nSpeakers: {self.speakers}"
 
 # create headphone objects
 Beats = Headphone("Beats", "Beats Studio Pro", "Blue", 0, 2)
@@ -67,12 +69,14 @@ question2 = input("Do you want to increase or decrease the volume? (increase/dec
 if question2 == "increase":
     amount = int(input("By how much? "))
     selected_headphone.volumeUp(amount)
+    selected_headphone.setVolume(amount)
     print(f"\n{selected_headphone.name} increased by {amount}")
     print(f"{selected_headphone.name} has a volume of {selected_headphone.getVolume()}")
 
 elif question2 == "decrease":
     amount = int(input("By how much? "))
     selected_headphone.volumeDown(amount)
+    selected_headphone.setVolume(amount)
     print(f"\n{selected_headphone.name} volume decreased by {amount}")
     print(f"{selected_headphone.name} has a volume of {selected_headphone.getVolume()}")
 else:
