@@ -9,11 +9,11 @@ def clearTerminal():
 clearTerminal()
 # class headphone
 class Headphone:
-    def __init__(self, brand, name, color, volumeII=0, speakers=2):
+    def __init__(self, brand, name, color, volume, speakers):
         self.brand = brand
         self.name = name
         self.color = color
-        self._volume = volumeII
+        self.volume = volume
         self.speakers = speakers
 
     def setVolume(self, value):
@@ -21,19 +21,18 @@ class Headphone:
             value = 0
         elif value > 20:
             value = 20
-        self._volume = value
+        self.volume = value
     
     def getVolume(self):
-        return self._volume
-
+        return self.volume
 
     def volumeUp(self, amount):
-        self._volume += amount
-        return self._volume
+        self.volume += amount
+        return self.volume
 
     def volumeDown(self, amount):
-        self._volume -= amount
-        return self._volume
+        self.volume -= amount
+        return self.volume
     
     def __str__(self):
         return f"Brand: {self.brand} \nType: {self.name}\nColor: {self.color}\nVolume: {self.volume}\nSpeakers: {self.speakers}"
@@ -64,18 +63,17 @@ while selected_headphone is None:
     else:
         print(f"{selected_headphone} selected.")
 
-question2 = input("Do you want to increase or decrease the volume? (increase/decrease) "
-"").strip().lower()
+question2 = input("Do you want to increase or decrease the volume? (increase/decrease) ").strip().lower()
 if question2 == "increase":
     amount = int(input("By how much? "))
     selected_headphone.volumeUp(amount)
-    print(f"{selected_headphone} increased by {amount}")
-    print(f"{selected_headphone} has a volume of {selected_headphone._volume}")
+    print(f"\n{selected_headphone.name} increased by {amount}")
+    print(f"{selected_headphone.name} has a volume of {selected_headphone.getVolume()}")
 
 elif question2 == "decrease":
     amount = int(input("By how much? "))
     selected_headphone.volumeDown(amount)
-    print(f"{selected_headphone} decreased by {amount}")
-    print(f"{selected_headphone} has a volume of {selected_headphone._volume}")
+    print(f"\n{selected_headphone.name} volume decreased by {amount}")
+    print(f"{selected_headphone.name} has a volume of {selected_headphone.getVolume()}")
 else:
     print("No volume change applied.")
