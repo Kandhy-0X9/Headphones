@@ -16,6 +16,7 @@ class Headphone:
         self.__volume = volume
         self.speakers = speakers
 
+    # checks data validation for volume
     def setVolume(self, amount):
         if amount < 0:
             self.__volume = 0
@@ -24,7 +25,7 @@ class Headphone:
         else:
             self.__volume = amount
         print(amount)
-        
+
     def getVolume(self):
         return self.__volume
 
