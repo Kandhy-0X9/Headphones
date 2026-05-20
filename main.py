@@ -14,7 +14,7 @@ class Headphone:
         self.name = name
         self.color = color
         self.__volume = volume
-        self.speakers = speakers
+        self.__speakers = speakers
 
     # checks data validation for volume
     def setVolume(self, amount):
