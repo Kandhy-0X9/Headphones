@@ -24,7 +24,6 @@ class Headphone:
             self.__volume = 20
         else:
             self.__volume = amount
-        print(amount)
 
     def getVolume(self):
         return self.__volume
