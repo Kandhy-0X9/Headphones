@@ -16,13 +16,16 @@ class Headphone:
         self._volume = volumeII
         self.speakers = speakers
 
-    def volume(self, value):
+    def setVolume(self, value):
         if value < 0:
             value = 0
         elif value > 20:
             value = 20
         self._volume = value
+    
+    def getVolume(self):
         return self._volume
+
 
     def volumeUp(self, amount):
         self._volume += amount
